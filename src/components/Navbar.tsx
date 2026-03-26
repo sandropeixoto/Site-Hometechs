@@ -14,14 +14,14 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-4 left-0 right-0 z-50 px-4 md:px-8">
-      <div className="max-w-7xl mx-auto glass-nav rounded-full px-6 py-3 flex items-center justify-between shadow-2xl shadow-indigo-500/10">
+      <div className="max-w-7xl mx-auto glass-nav rounded-full px-6 py-3 flex items-center justify-between shadow-2xl shadow-emerald-500/5">
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-2"
         >
-          <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
-            <Shield className="text-white w-5 h-5" />
+          <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center">
+            <Shield className="text-slate-950 w-5 h-5" />
           </div>
           <span className="text-xl font-bold tracking-tight text-white hidden sm:block">
             HOMETECHS
@@ -34,7 +34,7 @@ const Navbar = () => {
             <motion.a
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-slate-300 hover:text-indigo-400 transition-colors cursor-pointer"
+              className="text-sm font-medium text-slate-300 hover:text-emerald-400 transition-colors cursor-pointer"
               whileHover={{ y: -2 }}
             >
               {link.name}
@@ -63,7 +63,7 @@ const Navbar = () => {
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden absolute top-20 left-4 right-4 bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl"
+          className="md:hidden absolute top-20 left-4 right-4 bg-[#0a0f1e]/fb backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl"
         >
           <div className="flex flex-col gap-6">
             {navLinks.map((link) => (
@@ -73,7 +73,7 @@ const Navbar = () => {
                 className="flex items-center gap-3 text-lg font-medium text-slate-200"
                 onClick={() => setIsOpen(false)}
               >
-                <link.icon className="w-5 h-5 text-indigo-400" />
+                <link.icon className="w-5 h-5 text-emerald-400" />
                 {link.name}
               </a>
             ))}
