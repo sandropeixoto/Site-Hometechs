@@ -26,3 +26,28 @@ dist-ssr
 # Brain/Task artifacts (optional: you might want to keep some, but often these are ignored)
 #.gemini/antigravity/brain/*
 # Actually, for this specific project, I'll keep the brain folder visible in the prompt but maybe ignored in git if it's just meta
+
+# Environment & Secrets (AIOX)
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+
+# Dependencies (AIOX)
+node_modules/
+
+# Build & Logs (AIOX)
+dist/
+build/
+logs/
+
+# IDE & OS (AIOX)
+Thumbs.db
+.idea/
+*.swp
+
+# AIOX Local (AIOX)
+.aiox-core/local/
+.claude/settings.local.json
+.aiox/install-log.txt

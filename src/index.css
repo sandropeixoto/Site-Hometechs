@@ -2,36 +2,35 @@
 
 :root {
   --font-inter: "Inter", system-ui, -apple-system, sans-serif;
-  --font-playfair: "Playfair Display", serif;
+  --primary: #0056b3;
+  --primary-hover: #004494;
+  --accent: #ffc107;
+  --bg-dark: #0a0f1e;
 }
 
 body {
   font-family: var(--font-inter);
-  background-color: #0a0f1e;
+  background-color: var(--bg-dark);
   @apply text-slate-50 antialiased overflow-x-hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-playfair);
-}
-
 .glass-nav {
-  @apply bg-[#0a0f1e]/70 backdrop-blur-md border-b border-white/10;
+  @apply bg-[#0a0f1e]/80 backdrop-blur-lg border-b border-white/5;
 }
 
 .glass-card {
-  @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 transition-all duration-500 hover:bg-white/10 hover:border-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/10;
+  @apply bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl p-6 transition-all duration-500 hover:bg-white/[0.07] hover:border-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/10;
 }
 
 .btn-primary {
-  @apply bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-6 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg shadow-emerald-500/20 active:scale-95 cursor-pointer;
+  @apply bg-[#0056b3] hover:bg-[#004494] text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg shadow-blue-500/20 active:scale-95 cursor-pointer;
 }
 
 .btn-secondary {
-  @apply bg-white/5 hover:bg-white/10 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 border border-white/10 active:scale-95 cursor-pointer backdrop-blur-sm;
+  @apply bg-white/5 hover:bg-white/10 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 border border-white/10 active:scale-95 cursor-pointer backdrop-blur-sm;
 }
 
-/* Floating animation */
+/* Base animations */
 @keyframes float {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
@@ -39,5 +38,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .animate-float {
-  animation: float 4s ease-in-out infinite;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
 }
