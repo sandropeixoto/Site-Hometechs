@@ -72,7 +72,7 @@ export default function Page() {
       >
         <div className="flex items-center justify-between">
           <a href="#inicio" className="flex items-center shrink-0">
-            <img src="/logo.png" alt="Hometechs Logo" className="h-10 md:h-12 w-auto object-contain" />
+            <img src="/image.png" alt="Hometechs Logo" className="h-10 md:h-12 w-auto object-contain" />
           </a>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -113,7 +113,7 @@ export default function Page() {
             className="fixed inset-0 z-50 flex flex-col bg-white px-6 py-6"
           >
             <div className="flex items-center justify-between mb-8">
-              <img src="/logo.png" alt="Hometechs Logo" className="h-8 w-auto object-contain" />
+              <img src="/image.png" alt="Hometechs Logo" className="h-8 w-auto object-contain" />
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="p-2 text-slate-400 bg-slate-100 rounded-full hover:text-slate-700 hover:bg-slate-200"
@@ -160,9 +160,10 @@ export default function Page() {
           className="relative pt-32 pb-8 lg:pt-36 lg:pb-8"
         >
           <div className="max-w-7xl mx-auto px-6">
-            <div className="bg-white p-8 md:p-16 rounded-3xl shadow-sm border border-slate-200 relative overflow-hidden">
+            <div className="bg-white p-8 md:p-16 rounded-3xl shadow-sm border border-slate-200 relative overflow-hidden flex flex-col md:flex-row items-center gap-12">
               <div className="absolute -right-12 -bottom-12 w-96 h-96 bg-blue-50 rounded-full opacity-50 pointer-events-none" />
-              <div className="relative z-10 max-w-2xl">
+              
+              <div className="relative z-10 flex-1 max-w-2xl">
                 <motion.span
                   initial="hidden"
                   animate="visible"
@@ -206,6 +207,15 @@ export default function Page() {
                   </div>
                 </motion.div>
               </div>
+
+              <motion.div 
+                 initial={{ opacity: 0, scale: 0.9 }}
+                 animate={{ opacity: 1, scale: 1 }}
+                 transition={{ duration: 0.6, delay: 0.2 }}
+                 className="relative z-10 flex-1 flex justify-center w-full"
+              >
+                 <img src="/image.png" alt="Hometechs Logo Hero" className="w-[80%] max-w-md object-contain drop-shadow-xl" />
+              </motion.div>
             </div>
           </div>
         </section>
@@ -469,19 +479,20 @@ export default function Page() {
               className="grid grid-cols-2 lg:grid-cols-4 gap-6"
             >
               {[
-                { name: "CONTROL ID", desc: "Acesso e biometria" },
-                { name: "RWTECH", desc: "Ponto e acesso" },
-                { name: "SECULLUM", desc: "Software de controle" },
-                { name: "INTELBRAS", desc: "Alarmes e CFTV" }
+                { name: "CONTROL ID", desc: "Acesso e biometria", img: "/parceiro-1.png" },
+                { name: "RWTECH", desc: "Ponto e acesso", img: "/parceiro-2.png" },
+                { name: "SECULLUM", desc: "Software de controle", img: "/parceiro-3.png" },
+                { name: "INTELBRAS", desc: "Alarmes e CFTV", img: "/parceiro-4.png" }
               ].map((partner, i) => (
                 <motion.div
                   key={i}
                   variants={fadeUp}
                   whileHover={{ y: -5 }}
-                  className="bg-white border text-center border-slate-200 rounded-2xl py-8 px-6 shadow-sm hover:shadow-lg transition-all"
+                  className="bg-white border text-center border-slate-200 rounded-2xl py-8 px-6 shadow-sm hover:shadow-lg transition-all flex flex-col items-center justify-center"
                 >
-                  <div className="font-extrabold text-2xl tracking-tighter text-slate-800 mb-2">{partner.name}</div>
-                  <div className="text-xs font-medium text-slate-500 uppercase tracking-widest">{partner.desc}</div>
+                  <img src={partner.img} alt={partner.name} className="h-10 mb-4 object-contain" />
+                  <div className="font-extrabold text-lg tracking-tighter text-slate-800 mb-1">{partner.name}</div>
+                  <div className="text-[10px] font-medium text-slate-500 uppercase tracking-widest">{partner.desc}</div>
                 </motion.div>
               ))}
             </motion.div>
@@ -543,14 +554,14 @@ export default function Page() {
       <footer className="max-w-7xl mx-auto px-6 pb-6 mt-12">
         <div className="bg-white px-8 py-6 rounded-3xl shadow-sm border border-slate-200">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <img src="/logo.png" alt="Hometechs Logo" className="h-10 w-auto object-contain shrink-0" />
+            <img src="/image.png" alt="Hometechs Logo" className="h-10 w-auto object-contain shrink-0" />
             <div className="flex items-center space-x-6 w-full md:w-auto overflow-x-auto whitespace-nowrap hidden lg:flex">
               <span className="text-[10px] text-slate-400 uppercase font-bold tracking-tighter shrink-0">Parceiros:</span>
-              <div className="flex space-x-6 grayscale opacity-60">
-                <span className="text-xs font-black">CONTROL ID</span>
-                <span className="text-xs font-black">RWTECH</span>
-                <span className="text-xs font-black">SECULLUM</span>
-                <span className="text-xs font-black">INTELBRAS</span>
+              <div className="flex space-x-6 grayscale opacity-60 items-center">
+                <img src="/parceiro-1.png" alt="CONTROL ID" className="h-5 w-auto object-contain" />
+                <img src="/parceiro-2.png" alt="RWTECH" className="h-5 w-auto object-contain" />
+                <img src="/parceiro-3.png" alt="SECULLUM" className="h-5 w-auto object-contain" />
+                <img src="/parceiro-4.png" alt="INTELBRAS" className="h-5 w-auto object-contain" />
               </div>
             </div>
             
