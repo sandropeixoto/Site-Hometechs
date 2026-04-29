@@ -3,11 +3,11 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
-import logoImg from "../public/image.png";
-import parceiro1Img from "../public/parceiro-1.png";
-import parceiro2Img from "../public/parceiro-2.png";
-import parceiro3Img from "../public/parceiro-3.png";
-import parceiro4Img from "../public/parceiro-4.png";
+const logoImg = "/image.png";
+const parceiro1Img = "/parceiro-1.png";
+const parceiro2Img = "/parceiro-2.png";
+const parceiro3Img = "/parceiro-3.png";
+const parceiro4Img = "/parceiro-4.png";
 import {
   ShieldCheck,
   Clock,
@@ -78,7 +78,7 @@ export default function Page() {
       >
         <div className="flex items-center justify-between">
           <a href="#inicio" className="flex items-center shrink-0">
-            <Image src={logoImg} alt="Hometechs Logo" className="h-10 md:h-12 w-auto object-contain" />
+            <Image src={logoImg} alt="Hometechs Logo" width={200} height={48} className="h-10 md:h-12 w-auto object-contain" />
           </a>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -119,7 +119,7 @@ export default function Page() {
             className="fixed inset-0 z-50 flex flex-col bg-white px-6 py-6"
           >
             <div className="flex items-center justify-between mb-8">
-              <Image src={logoImg} alt="Hometechs Logo" className="h-8 w-auto object-contain" />
+              <Image src={logoImg} alt="Hometechs Logo" width={160} height={32} className="h-8 w-auto object-contain" />
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="p-2 text-slate-400 bg-slate-100 rounded-full hover:text-slate-700 hover:bg-slate-200"
@@ -220,7 +220,7 @@ export default function Page() {
                  transition={{ duration: 0.6, delay: 0.2 }}
                  className="relative z-10 flex-1 flex justify-center w-full"
               >
-                 <Image src={logoImg} alt="Hometechs Logo Hero" className="w-[80%] max-w-md object-contain drop-shadow-xl" />
+                 <Image src={logoImg} alt="Hometechs Logo Hero" width={400} height={200} className="w-[80%] max-w-md object-contain drop-shadow-xl" priority />
               </motion.div>
             </div>
           </div>
@@ -496,7 +496,7 @@ export default function Page() {
                   whileHover={{ y: -5 }}
                   className="bg-white border text-center border-slate-200 rounded-2xl py-8 px-6 shadow-sm hover:shadow-lg transition-all flex flex-col items-center justify-center"
                 >
-                  <Image src={partner.img} alt={partner.name} className="h-10 w-auto mb-4 object-contain" />
+                  <Image src={partner.img} alt={partner.name} width={120} height={40} className="h-10 w-auto mb-4 object-contain" />
                   <div className="font-extrabold text-lg tracking-tighter text-slate-800 mb-1">{partner.name}</div>
                   <div className="text-[10px] font-medium text-slate-500 uppercase tracking-widest">{partner.desc}</div>
                 </motion.div>
@@ -560,14 +560,14 @@ export default function Page() {
       <footer className="max-w-7xl mx-auto px-6 pb-6 mt-12">
         <div className="bg-white px-8 py-6 rounded-3xl shadow-sm border border-slate-200">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <Image src={logoImg} alt="Hometechs Logo" className="h-10 w-auto object-contain shrink-0" />
+            <Image src={logoImg} alt="Hometechs Logo" width={160} height={40} className="h-10 w-auto object-contain shrink-0" />
             <div className="flex items-center space-x-6 w-full md:w-auto overflow-x-auto whitespace-nowrap hidden lg:flex">
               <span className="text-[10px] text-slate-400 uppercase font-bold tracking-tighter shrink-0">Parceiros:</span>
               <div className="flex space-x-6 grayscale opacity-60 items-center">
-                <Image src={parceiro1Img} alt="CONTROL ID" className="h-5 w-auto object-contain" />
-                <Image src={parceiro2Img} alt="RWTECH" className="h-5 w-auto object-contain" />
-                <Image src={parceiro3Img} alt="SECULLUM" className="h-5 w-auto object-contain" />
-                <Image src={parceiro4Img} alt="INTELBRAS" className="h-5 w-auto object-contain" />
+                <Image src={parceiro1Img} alt="CONTROL ID" width={80} height={20} className="h-5 w-auto object-contain" />
+                <Image src={parceiro2Img} alt="RWTECH" width={80} height={20} className="h-5 w-auto object-contain" />
+                <Image src={parceiro3Img} alt="SECULLUM" width={80} height={20} className="h-5 w-auto object-contain" />
+                <Image src={parceiro4Img} alt="INTELBRAS" width={80} height={20} className="h-5 w-auto object-contain" />
               </div>
             </div>
             
