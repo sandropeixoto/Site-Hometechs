@@ -71,19 +71,9 @@ export default function Page() {
         }`}
       >
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-blue-700 rounded-lg flex items-center justify-center shrink-0">
-              <ShieldCheck className="w-6 h-6 text-white" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-bold tracking-tight text-slate-900 leading-none">
-                HOMETECHS
-              </span>
-              <span className="text-[10px] font-bold tracking-widest text-blue-600 uppercase mt-1">
-                Segurança & Automação
-              </span>
-            </div>
-          </div>
+          <a href="#inicio" className="flex items-center shrink-0">
+            <img src="/logo.png" alt="Hometechs Logo" className="h-10 md:h-12 w-auto object-contain" />
+          </a>
 
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
@@ -123,7 +113,7 @@ export default function Page() {
             className="fixed inset-0 z-50 flex flex-col bg-white px-6 py-6"
           >
             <div className="flex items-center justify-between mb-8">
-              <span className="text-xl font-bold text-blue-700">HOMETECHS</span>
+              <img src="/logo.png" alt="Hometechs Logo" className="h-8 w-auto object-contain" />
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="p-2 text-slate-400 bg-slate-100 rounded-full hover:text-slate-700 hover:bg-slate-200"
@@ -553,7 +543,8 @@ export default function Page() {
       <footer className="max-w-7xl mx-auto px-6 pb-6 mt-12">
         <div className="bg-white px-8 py-6 rounded-3xl shadow-sm border border-slate-200">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center space-x-6 w-full md:w-auto overflow-x-auto whitespace-nowrap hidden md:flex">
+            <img src="/logo.png" alt="Hometechs Logo" className="h-10 w-auto object-contain shrink-0" />
+            <div className="flex items-center space-x-6 w-full md:w-auto overflow-x-auto whitespace-nowrap hidden lg:flex">
               <span className="text-[10px] text-slate-400 uppercase font-bold tracking-tighter shrink-0">Parceiros:</span>
               <div className="flex space-x-6 grayscale opacity-60">
                 <span className="text-xs font-black">CONTROL ID</span>
