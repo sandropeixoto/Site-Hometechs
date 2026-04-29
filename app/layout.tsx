@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     description: 'Soluções inovadoras em Controle de Ponto, Acesso e Segurança Eletrônica no Pará.',
     images: ['/image.png'],
   },
+  icons: {
+    icon: '/favicon.png',
+  },
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {

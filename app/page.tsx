@@ -47,6 +47,19 @@ const staggerContainer = {
 export default function Page() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [phone, setPhone] = useState("");
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value.replace(/\D/g, "");
+    if (value.length > 11) value = value.substring(0, 11);
+    
+    if (value.length <= 10) {
+      value = value.replace(/^(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
+    } else {
+      value = value.replace(/^(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
+    }
+    setPhone(value);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -535,7 +548,13 @@ export default function Page() {
                     <input type="text" className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Seu nome" />
                   </div>
                   <div>
-                    <input type="tel" className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Telefone / WhatsApp" />
+                    <input 
+                      type="tel" 
+                      value={phone}
+                      onChange={handlePhoneChange}
+                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" 
+                      placeholder="Telefone / WhatsApp" 
+                    />
                   </div>
                   <div>
                     <textarea rows={4} className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Como podemos ajudar?" />
