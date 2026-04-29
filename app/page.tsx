@@ -3,11 +3,11 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
-const logoImg = "/image.png";
-const parceiro1Img = "/parceiro-1.png";
-const parceiro2Img = "/parceiro-2.png";
-const parceiro3Img = "/parceiro-3.png";
-const parceiro4Img = "/parceiro-4.png";
+import logoImg from "@/public/image.png";
+import parceiro1Img from "@/public/parceiro-1.png";
+import parceiro2Img from "@/public/parceiro-2.png";
+import parceiro3Img from "@/public/parceiro-3.png";
+import parceiro4Img from "@/public/parceiro-4.png";
 import {
   ShieldCheck,
   Clock,
