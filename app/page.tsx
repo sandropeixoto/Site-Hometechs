@@ -70,7 +70,7 @@ export default function Page() {
   }, []);
 
   const navLinks = [
-    { name: "Sobre", href: "#sobre" },
+    { name: "Sobre Nós", href: "#sobre" },
     { name: "Soluções", href: "#solucoes" },
     { name: "Portfólio", href: "#portfolio" },
   ];
@@ -85,7 +85,7 @@ export default function Page() {
       >
         <div className="flex items-center justify-between">
           <a href="#inicio" className="flex items-center shrink-0">
-            <Image src={getAssetPath("/logo-topo.png")} alt="Hometechs Logo" width={200} height={48} className="h-10 md:h-12 w-auto object-contain" />
+            <Image src={getAssetPath("/image.png")} alt="Hometechs Logo" width={200} height={48} className="h-10 md:h-12 w-auto object-contain" />
           </a>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -126,7 +126,7 @@ export default function Page() {
             className="fixed inset-0 z-50 flex flex-col bg-white px-6 py-6"
           >
             <div className="flex items-center justify-between mb-8">
-              <Image src={getAssetPath("/logo-topo.png")} alt="Hometechs Logo" width={160} height={32} className="h-8 w-auto object-contain" />
+              <Image src={getAssetPath("/image.png")} alt="Hometechs Logo" width={160} height={32} className="h-8 w-auto object-contain" />
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="p-2 text-slate-400 bg-slate-100 rounded-full hover:text-slate-700 hover:bg-slate-200"
@@ -233,30 +233,74 @@ export default function Page() {
           </div>
         </section>
 
-        {/* INTRO / ABOUT SUMMARY */}
-        <section id="sobre" className="py-8 relative">
+        {/* ABOUT / MISSION / VISION / VALUES */}
+        <section id="sobre" className="py-24 bg-white border-y border-slate-100">
           <div className="max-w-7xl mx-auto px-6">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={staggerContainer}
-              className="grid grid-cols-1 md:grid-cols-3 gap-6"
-            >
-              <motion.div variants={fadeUp} className="bg-blue-700 p-8 rounded-3xl text-white shadow-lg shadow-blue-200/50 flex flex-col justify-center relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl pointer-events-none -translate-y-1/2 translate-x-1/2" />
-                <h3 className="font-bold mb-3 text-xl italic relative z-10">Missão</h3>
-                <p className="text-sm leading-relaxed opacity-90 relative z-10">Comercializar e instalar produtos com tecnologia inovadora que proporcionem controle, segurança e economia para nossos clientes.</p>
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+              >
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-sm font-semibold mb-6">
+                  Sobre a Hometechs
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">
+                  Nossa história é construída sobre valores sólidos e compromisso inabalável com a excelência.
+                </h2>
+                <div className="space-y-6 text-lg text-slate-600 mb-8">
+                  <p>
+                    A Hometechs nasceu com a missão de comercializar e instalar produtos com tecnologia inovadora, que proporcionem controle, segurança e economia nas empresas e residências de nossos clientes.
+                  </p>
+                  <p>
+                    Estamos estabelecidos em Belém do Pará e nosso compromisso é crescer com solidez e nos estabilizar como referência no mercado local.
+                  </p>
+                </div>
               </motion.div>
-              <motion.div variants={fadeUp} className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-center hover:shadow-md transition-shadow">
-                <h3 className="font-bold text-slate-900 mb-3 text-xl italic">Visão</h3>
-                <p className="text-sm leading-relaxed text-slate-500">Ser reconhecida no mercado paraense entre as melhores empresas de Controle de Ponto, Acesso, Automação e Segurança Eletrônica.</p>
+
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={staggerContainer}
+                className="grid sm:grid-cols-2 gap-4"
+              >
+                <motion.div variants={fadeUp} className="bg-slate-50 rounded-3xl p-6 border border-slate-100">
+                  <div className="w-10 h-10 bg-blue-100 text-blue-600 flex items-center justify-center rounded-xl mb-4">
+                    <CheckCircle2 className="w-5 h-5" />
+                  </div>
+                  <h3 className="font-bold text-slate-900 mb-2">Missão</h3>
+                  <p className="text-sm text-slate-600">Comercializar e instalar produtos com tecnologia inovadora que proporcionem controle, segurança e economia.</p>
+                </motion.div>
+                
+                <motion.div variants={fadeUp} className="bg-slate-50 rounded-3xl p-6 border border-slate-100">
+                  <div className="w-10 h-10 bg-blue-100 text-blue-600 flex items-center justify-center rounded-xl mb-4">
+                    <ArrowUpRight className="w-5 h-5" />
+                  </div>
+                  <h3 className="font-bold text-slate-900 mb-2">Visão</h3>
+                  <p className="text-sm text-slate-600">Ser reconhecida no mercado paraense entre as melhores empresas do nosso setor.</p>
+                </motion.div>
+
+                <motion.div variants={fadeUp} className="sm:col-span-2 bg-blue-600 text-white rounded-3xl p-8 shadow-xl shadow-blue-600/20">
+                  <h3 className="font-bold mb-6 text-lg">Nossos Valores</h3>
+                  <ul className="space-y-4">
+                    <li className="flex items-center gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-blue-300" />
+                      Profissionalismo, Ética e Respeito
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-blue-300" />
+                      Preço competitivo e lucratividade responsável
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-blue-300" />
+                      Responsabilidade Socioambiental
+                    </li>
+                  </ul>
+                </motion.div>
               </motion.div>
-              <motion.div variants={fadeUp} className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-center hover:shadow-md transition-shadow">
-                <h3 className="font-bold text-slate-900 mb-3 text-xl italic">Valores</h3>
-                <p className="text-sm leading-relaxed text-slate-500">Profissionalismo, ética, respeito, preço competitivo, lucratividade responsável e responsabilidade socioambiental.</p>
-              </motion.div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -395,77 +439,6 @@ export default function Page() {
                 ]}
               />
             </motion.div>
-          </div>
-        </section>
-
-        {/* ABOUT / MISSION / VISION / VALUES */}
-        <section className="py-24 bg-white border-y border-slate-100">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-              >
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-sm font-semibold mb-6">
-                  Sobre a Hometechs
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">
-                  Nossa história é construída sobre valores sólidos e compromisso inabalável com a excelência.
-                </h2>
-                <div className="space-y-6 text-lg text-slate-600 mb-8">
-                  <p>
-                    A Hometechs nasceu com a missão de comercializar e instalar produtos com tecnologia inovadora, que proporcionem controle, segurança e economia nas empresas e residências de nossos clientes.
-                  </p>
-                  <p>
-                    Estamos estabelecidos em Belém do Pará e nosso compromisso é crescer com solidez e nos estabilizar como referência no mercado local.
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={staggerContainer}
-                className="grid sm:grid-cols-2 gap-4"
-              >
-                <motion.div variants={fadeUp} className="bg-slate-50 rounded-3xl p-6 border border-slate-100">
-                  <div className="w-10 h-10 bg-blue-100 text-blue-600 flex items-center justify-center rounded-xl mb-4">
-                    <CheckCircle2 className="w-5 h-5" />
-                  </div>
-                  <h3 className="font-bold text-slate-900 mb-2">Missão</h3>
-                  <p className="text-sm text-slate-600">Comercializar e instalar produtos com tecnologia inovadora que proporcionem controle, segurança e economia.</p>
-                </motion.div>
-                
-                <motion.div variants={fadeUp} className="bg-slate-50 rounded-3xl p-6 border border-slate-100">
-                  <div className="w-10 h-10 bg-blue-100 text-blue-600 flex items-center justify-center rounded-xl mb-4">
-                    <ArrowUpRight className="w-5 h-5" />
-                  </div>
-                  <h3 className="font-bold text-slate-900 mb-2">Visão</h3>
-                  <p className="text-sm text-slate-600">Ser reconhecida no mercado paraense entre as melhores empresas do nosso setor.</p>
-                </motion.div>
-
-                <motion.div variants={fadeUp} className="sm:col-span-2 bg-blue-600 text-white rounded-3xl p-8 shadow-xl shadow-blue-600/20">
-                  <h3 className="font-bold mb-6 text-lg">Nossos Valores</h3>
-                  <ul className="space-y-4">
-                    <li className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-blue-300" />
-                      Profissionalismo, Ética e Respeito
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-blue-300" />
-                      Preço competitivo e lucratividade responsável
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-blue-300" />
-                      Responsabilidade Socioambiental
-                    </li>
-                  </ul>
-                </motion.div>
-              </motion.div>
-            </div>
           </div>
         </section>
 
