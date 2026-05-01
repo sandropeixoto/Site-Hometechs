@@ -26,7 +26,8 @@ import {
   Lightbulb,
   Shield,
   Cpu,
-  ArrowUpRight
+  ArrowUpRight,
+  MessageCircle
 } from "lucide-react";
 
 const fadeUp = {
@@ -73,6 +74,7 @@ export default function Page() {
     { name: "Sobre Nós", href: "#sobre" },
     { name: "Soluções", href: "#solucoes" },
     { name: "Portfólio", href: "#portfolio" },
+    { name: "Parceiros", href: "#parceiros" },
   ];
 
   return (
@@ -254,7 +256,7 @@ export default function Page() {
                     A Hometechs nasceu com a missão de comercializar e instalar produtos com tecnologia inovadora, que proporcionem controle, segurança e economia nas empresas e residências de nossos clientes.
                   </p>
                   <p>
-                    Estamos estabelecidos em Belém do Pará e nosso compromisso é crescer com solidez e nos estabilizar como referência no mercado local.
+                    Estamos estabelecidos em Belém do Pará e o nosso compromisso é crescer com solidez e nos estabilizar como referência no mercado local.
                   </p>
                 </div>
               </motion.div>
@@ -285,8 +287,8 @@ export default function Page() {
                 <motion.div variants={fadeUp} className="sm:col-span-2 bg-blue-600 text-white rounded-3xl p-8 shadow-xl shadow-blue-600/20">
                   <h3 className="font-bold mb-6 text-lg">Nossos Valores</h3>
                   <div className="space-y-4 text-blue-100 text-sm">
-                    <p>Profissionalismo, Ética, Respeito aos Clientes e aos Colaboradores. Fornecer produtos e serviços com preço competitivo e lucratividade responsável.</p>
-                    <p>Ser uma empresa com Responsabilidade Sócio Ambiental.</p>
+                    <p>Profissionalismo, Ética, Respeito aos Clientes e aos Colaboradores. Fornecer produtos e serviços com preço competitivo e lucratividade responsável.<br />
+                    Ser uma empresa com Responsabilidade Sócio Ambiental.</p>
                   </div>
                 </motion.div>
               </motion.div>
@@ -295,7 +297,7 @@ export default function Page() {
         </section>
 
         {/* SOLUTIONS MAIN CATEGORIES */}
-        <section id="solucoes" className="py-8 relative">
+        <section id="solucoes" className="py-8 relative scroll-mt-28">
           <div className="max-w-7xl mx-auto px-6">
             <div className="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-slate-200 relative overflow-hidden">
               <div className="absolute right-0 bottom-0 w-96 h-96 bg-blue-50/50 rounded-full blur-3xl pointer-events-none translate-x-1/3 translate-y-1/3" />
@@ -329,7 +331,7 @@ export default function Page() {
                 {[
                   {
                     icon: <Fingerprint className="w-6 h-6" />,
-                    title: "Controle de Acesso e Ponto",
+                    title: "Controle de Ponto e Acesso",
                     desc: "Relógios de ponto, catracas, softwares e sistemas completos para gestão eficiente de pessoas e ambientes."
                   },
                   {
@@ -351,13 +353,13 @@ export default function Page() {
                   <motion.div
                     key={i}
                     variants={fadeUp}
-                    className="group bg-slate-50 border border-slate-100 hover:border-blue-200 rounded-2xl p-6 transition-colors shadow-sm hover:shadow-md"
+                    className="group bg-blue-600 text-white rounded-3xl p-6 shadow-xl shadow-blue-600/20 hover:scale-[1.02] transition-transform"
                   >
-                    <div className="w-12 h-12 bg-white text-blue-700 rounded-lg flex items-center justify-center mb-5 shadow-sm group-hover:scale-110 transition-transform origin-left">
+                    <div className="w-12 h-12 bg-blue-500 text-white rounded-lg flex items-center justify-center mb-5 shadow-sm group-hover:scale-110 transition-transform origin-left">
                       {service.icon}
                     </div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-2 leading-tight">{service.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">{service.desc}</p>
+                    <h3 className="text-lg font-bold text-white mb-2 leading-tight">{service.title}</h3>
+                    <p className="text-blue-100 text-sm leading-relaxed">{service.desc}</p>
                   </motion.div>
                 ))}
               </motion.div>
@@ -366,7 +368,7 @@ export default function Page() {
         </section>
 
         {/* DETAILED PORTFOLIO */}
-        <section id="portfolio" className="py-8 relative">
+        <section id="portfolio" className="py-8 relative scroll-mt-28">
           <div className="max-w-7xl mx-auto px-6">
             <motion.div
               initial="hidden"
@@ -433,7 +435,7 @@ export default function Page() {
         </section>
 
         {/* PARTNERS */}
-        <section id="parceiros" className="py-20 bg-slate-50">
+        <section id="parceiros" className="py-20 bg-slate-50 scroll-mt-28">
           <div className="max-w-7xl mx-auto px-6 text-center">
             <motion.div
               initial="hidden"
@@ -476,7 +478,7 @@ export default function Page() {
         </section>
 
         {/* CONTATO */}
-        <section id="contato" className="py-8 relative">
+        <section id="contato" className="py-8 relative scroll-mt-28">
           <div className="max-w-7xl mx-auto px-6">
             <div className="bg-slate-900 rounded-3xl p-8 lg:p-12 text-white relative overflow-hidden flex flex-col md:flex-row gap-12">
               <div className="flex-1 z-10">
@@ -533,31 +535,29 @@ export default function Page() {
       </main>
 
       {/* FOOTER */}
-      <footer className="max-w-7xl mx-auto px-6 pb-6 mt-12">
-        <div className="bg-white px-8 py-6 rounded-3xl shadow-sm border border-slate-200">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <Image src={getAssetPath("/logo-topo.png")} alt="Hometechs Logo" width={160} height={40} className="h-10 w-auto object-contain shrink-0" />
-            <div className="flex items-center space-x-6 w-full md:w-auto overflow-x-auto whitespace-nowrap hidden lg:flex">
-              <span className="text-[10px] text-slate-400 uppercase font-bold tracking-tighter shrink-0">Parceiros:</span>
-              <div className="flex space-x-6 grayscale opacity-60 items-center">
-                <Image src={getAssetPath("/parceiro-1.png")} alt="CONTROL ID" width={80} height={20} className="h-5 w-auto object-contain" />
-                <Image src={getAssetPath("/parceiro-2.png")} alt="RWTECH" width={80} height={20} className="h-5 w-auto object-contain" />
-                <Image src={getAssetPath("/parceiro-3.png")} alt="SECULLUM" width={80} height={20} className="h-5 w-auto object-contain" />
-                <Image src={getAssetPath("/parceiro-4.png")} alt="INTELBRAS" width={80} height={20} className="h-5 w-auto object-contain" />
-              </div>
-            </div>
-            
-            <div className="text-[10px] text-slate-400 text-center md:text-right">
-              CNPJ: 11.991.794/0001-19 <br className="md:hidden" />© {new Date().getFullYear()} Hometechs. Todos os direitos reservados.
-              <div className="mt-2">
-                <a href="https://nano.net.br" target="_blank" rel="noopener noreferrer" className="text-slate-800 font-bold hover:text-slate-900 transition-colors">
-                  Desenvolvido por NANO
-                </a>
-              </div>
-            </div>
+      <footer className="max-w-7xl mx-auto px-6 pb-6 mt-8">
+        <div className="bg-white px-8 py-5 rounded-3xl shadow-sm border border-slate-200 flex flex-col items-center text-center">
+          <Image src={getAssetPath("/image.png")} alt="Hometechs Logo" width={240} height={60} className="h-14 w-auto object-contain mb-4" />
+          
+          <div className="text-xs text-slate-500 space-y-1">
+            <p>© {new Date().getFullYear() || 2026} Hometechs. Todos os direitos reservados. Desenvolvido por <a href="https://nano.net.br" target="_blank" rel="noopener noreferrer" className="font-bold text-slate-800 hover:text-slate-900 transition-colors">NANO</a></p>
           </div>
         </div>
       </footer>
+
+      {/* WHATSAPP FLOAT BUTTON */}
+      <a
+        href="https://wa.me/5591980110110?text=Olá, Hometechs! Gostaria de mais informações sobre suas soluções."
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg shadow-[#25D366]/30 hover:scale-110 hover:shadow-xl transition-all flex items-center justify-center group"
+        aria-label="Contato via WhatsApp"
+      >
+        <MessageCircle className="w-6 h-6" />
+        <span className="absolute right-full mr-4 bg-slate-900 text-white text-xs px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+          Fale conosco no WhatsApp
+        </span>
+      </a>
     </div>
   );
 }
@@ -574,11 +574,11 @@ function PortfolioCard({ title, icon, items }: { title: string, icon: React.Reac
       <h3 className="text-lg font-bold text-slate-900 mb-4">{title}</h3>
       <div className="space-y-3 mt-auto">
         {items.map((item, idx) => (
-          <div key={idx} className="flex items-start p-3 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors">
+          <div key={idx} className="group flex items-start p-3 bg-slate-50 rounded-xl hover:bg-blue-600 transition-colors cursor-default">
             <div className="w-6 h-6 bg-white rounded flex items-center justify-center mr-3 shadow-sm shrink-0">
               <CheckCircle2 className="w-3 h-3 text-blue-600" />
             </div>
-            <p className="text-xs font-bold text-slate-800 leading-tight">{item}</p>
+            <p className="text-xs font-bold text-slate-800 group-hover:text-white leading-tight transition-colors">{item}</p>
           </div>
         ))}
       </div>
