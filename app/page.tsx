@@ -183,7 +183,7 @@ export default function Page() {
                   variants={fadeUp}
                   className="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-[11px] font-bold rounded-full mb-6 uppercase tracking-wider"
                 >
-                  Tecnologia paraense de ponta
+                  Equipe Técnica Certificada
                 </motion.span>
                 
                 <motion.h1
@@ -211,12 +211,12 @@ export default function Page() {
                   className="flex flex-wrap items-center gap-4"
                 >
                   <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 flex items-center space-x-3">
-                    <span className="text-blue-600 text-2xl font-bold">+10</span>
+                    <span className="text-blue-600 text-2xl font-bold">+16</span>
                     <span className="text-xs text-slate-500 font-medium uppercase leading-tight">Anos de<br />Experiência</span>
                   </div>
                   <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 flex items-center space-x-3">
                     <span className="text-blue-600 text-2xl font-bold">100%</span>
-                    <span className="text-xs text-slate-500 font-medium uppercase leading-tight">Suporte<br />Autorizado</span>
+                    <span className="text-xs text-slate-500 font-medium uppercase leading-tight">Suporte<br />Certificado</span>
                   </div>
                 </motion.div>
               </div>
@@ -266,38 +266,28 @@ export default function Page() {
                 variants={staggerContainer}
                 className="grid sm:grid-cols-2 gap-4"
               >
-                <motion.div variants={fadeUp} className="bg-slate-50 rounded-3xl p-6 border border-slate-100">
-                  <div className="w-10 h-10 bg-blue-100 text-blue-600 flex items-center justify-center rounded-xl mb-4">
+                <motion.div variants={fadeUp} className="bg-blue-600 text-white rounded-3xl p-6 shadow-xl shadow-blue-600/20">
+                  <div className="w-10 h-10 bg-blue-500 text-white flex items-center justify-center rounded-xl mb-4">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
-                  <h3 className="font-bold text-slate-900 mb-2">Missão</h3>
-                  <p className="text-sm text-slate-600">Comercializar e instalar produtos com tecnologia inovadora que proporcionem controle, segurança e economia.</p>
+                  <h3 className="font-bold mb-2">Missão</h3>
+                  <p className="text-sm text-blue-100">Comercializar e Instalar produtos com tecnologia inovadora que proporcionem controle, segurança e economia nas empresas e residências dos seus clientes. Se estabilizar no mercado e crescer com solidez e transparência.</p>
                 </motion.div>
                 
-                <motion.div variants={fadeUp} className="bg-slate-50 rounded-3xl p-6 border border-slate-100">
-                  <div className="w-10 h-10 bg-blue-100 text-blue-600 flex items-center justify-center rounded-xl mb-4">
+                <motion.div variants={fadeUp} className="bg-blue-600 text-white rounded-3xl p-6 shadow-xl shadow-blue-600/20">
+                  <div className="w-10 h-10 bg-blue-500 text-white flex items-center justify-center rounded-xl mb-4">
                     <ArrowUpRight className="w-5 h-5" />
                   </div>
-                  <h3 className="font-bold text-slate-900 mb-2">Visão</h3>
-                  <p className="text-sm text-slate-600">Ser reconhecida no mercado paraense entre as melhores empresas do nosso setor.</p>
+                  <h3 className="font-bold mb-2">Visão</h3>
+                  <p className="text-sm text-blue-100">Ser reconhecida no mercado paraense entre as melhores empresas do nosso setor.</p>
                 </motion.div>
 
                 <motion.div variants={fadeUp} className="sm:col-span-2 bg-blue-600 text-white rounded-3xl p-8 shadow-xl shadow-blue-600/20">
                   <h3 className="font-bold mb-6 text-lg">Nossos Valores</h3>
-                  <ul className="space-y-4">
-                    <li className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-blue-300" />
-                      Profissionalismo, Ética e Respeito
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-blue-300" />
-                      Preço competitivo e lucratividade responsável
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-blue-300" />
-                      Responsabilidade Socioambiental
-                    </li>
-                  </ul>
+                  <div className="space-y-4 text-blue-100 text-sm">
+                    <p>Profissionalismo, Ética, Respeito aos Clientes e aos Colaboradores. Fornecer produtos e serviços com preço competitivo e lucratividade responsável.</p>
+                    <p>Ser uma empresa com Responsabilidade Sócio Ambiental.</p>
+                  </div>
                 </motion.div>
               </motion.div>
             </div>
