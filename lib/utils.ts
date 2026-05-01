@@ -6,11 +6,6 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function getAssetPath(path: string) {
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
-  const cleanBasePath = basePath ? (basePath.startsWith('/') ? basePath : `/${basePath}`) : '';
-  const cleanPath = path.startsWith('/') ? path : `/${path}`;
-  
-  // No final do dia, o Next.js lida com caminhos absolutos / publicos
-  // Mas para Static HTML Export com basePath, as imagens no public/ precisam do prefixo.
-  return `${cleanBasePath}${cleanPath}`;
+  // Always return the absolute path since a custom domain is being used.
+  return path.startsWith('/') ? path : `/${path}`;
 }

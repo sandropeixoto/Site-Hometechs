@@ -48,7 +48,11 @@ const staggerContainer = {
 export default function Page() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value.replace(/\D/g, "");
@@ -60,6 +64,34 @@ export default function Page() {
       value = value.replace(/^(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
     }
     setPhone(value);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('loading');
+
+    try {
+      const response = await fetch('https://mail-proxy-has46dauxa-rj.a.run.app/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, phone, message }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Erro ao enviar mensagem');
+      }
+
+      setStatus('success');
+      setName('');
+      setEmail('');
+      setPhone('');
+      setMessage('');
+    } catch (err) {
+      console.error(err);
+      setStatus('error');
+    }
   };
 
   useEffect(() => {
@@ -508,9 +540,26 @@ export default function Page() {
                 <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/20 blur-3xl rounded-full pointer-events-none" />
                 <h3 className="text-xl font-bold mb-6 text-white text-center md:text-left">Solicite um Orçamento</h3>
                 
-                <form className="space-y-4 relative z-10" onSubmit={(e) => e.preventDefault()}>
+                <form className="space-y-4 relative z-10" onSubmit={handleSubmit}>
                   <div>
-                    <input type="text" className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Seu nome" />
+                    <input 
+                      type="text" 
+                      required
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" 
+                      placeholder="Seu nome" 
+                    />
+                  </div>
+                  <div>
+                    <input 
+                      type="email" 
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" 
+                      placeholder="Seu e-mail" 
+                    />
                   </div>
                   <div>
                     <input 
@@ -518,15 +567,41 @@ export default function Page() {
                       value={phone}
                       onChange={handlePhoneChange}
                       className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" 
-                      placeholder="Telefone / WhatsApp" 
+                      placeholder="Telefone / WhatsApp (opcional)" 
                     />
                   </div>
                   <div>
-                    <textarea rows={4} className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Como podemos ajudar?" />
+                    <textarea 
+                      rows={4} 
+                      required
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" 
+                      placeholder="Como podemos ajudar?" 
+                    />
                   </div>
-                  <button className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-blue-600/20 transition-all hover:scale-[1.02] mt-2">
-                    Enviar Mensagem
+                  <button 
+                    disabled={status === 'loading'}
+                    className="w-full bg-blue-600 hover:bg-blue-500 disabled:opacity-70 disabled:hover:bg-blue-600 text-white font-bold py-3 rounded-xl shadow-lg shadow-blue-600/20 transition-all hover:scale-[1.02] disabled:hover:scale-100 mt-2 flex items-center justify-center"
+                  >
+                    {status === 'loading' ? (
+                       <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                       </svg>
+                    ) : null}
+                    {status === 'loading' ? 'Enviando...' : 'Enviar Mensagem'}
                   </button>
+                  {status === 'success' && (
+                    <div className="p-3 bg-green-500/20 border border-green-500/50 rounded-xl text-green-400 text-sm mt-4 text-center">
+                      Mensagem enviada com sucesso! Em breve entraremos em contato.
+                    </div>
+                  )}
+                  {status === 'error' && (
+                    <div className="p-3 bg-red-500/20 border border-red-500/50 rounded-xl text-red-400 text-sm mt-4 text-center">
+                      Ocorreu um erro ao enviar sua mensagem. Tente novamente mais tarde.
+                    </div>
+                  )}
                 </form>
               </div>
             </div>
