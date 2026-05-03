@@ -235,7 +235,7 @@ export default function Page() {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="text-lg text-slate-600 mb-10 max-w-xl leading-relaxed"
                 >
-                  Relógios de Ponto, Catracas, Controle de Acesso, Alarmes, CFTV e Cerca Elétrica. Serviços e instalamos produtos inovadores com segurança.
+                  Relógios de Ponto, Catracas, Controle de Acesso, Alarmes, CFTV e Cerca Elétrica. Produtos inovadores, Serviços com segurança e garantia.
                 </motion.p>
 
                 <motion.div
