@@ -52,7 +52,9 @@ export default function Page() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const formLoadTime = useState(() => Date.now())[0];
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value.replace(/\D/g, "");
@@ -68,6 +70,13 @@ export default function Page() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Honeypot: bots preenchem campos ocultos, humanos não
+    if (honeypot) return;
+
+    // Tempo mínimo de preenchimento: menos de 3s indica bot
+    if (Date.now() - formLoadTime < 3000) return;
+
     setStatus('loading');
 
     try {
@@ -541,43 +550,58 @@ export default function Page() {
                 <h3 className="text-xl font-bold mb-6 text-white text-center md:text-left">Solicite um Orçamento</h3>
                 
                 <form className="space-y-4 relative z-10" onSubmit={handleSubmit}>
+                  {/* Honeypot: campo invisível para detectar bots */}
+                  <input
+                    type="text"
+                    name="website"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    style={{ display: 'none' }}
+                  />
                   <div>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" 
-                      placeholder="Seu nome" 
+                      maxLength={100}
+                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors"
+                      placeholder="Seu nome"
                     />
                   </div>
                   <div>
-                    <input 
-                      type="email" 
+                    <input
+                      type="email"
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" 
-                      placeholder="Seu e-mail" 
+                      maxLength={254}
+                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors"
+                      placeholder="Seu e-mail"
                     />
                   </div>
                   <div>
-                    <input 
-                      type="tel" 
+                    <input
+                      type="tel"
                       value={phone}
                       onChange={handlePhoneChange}
-                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" 
-                      placeholder="Telefone / WhatsApp (opcional)" 
+                      maxLength={15}
+                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors"
+                      placeholder="Telefone / WhatsApp (opcional)"
                     />
                   </div>
                   <div>
-                    <textarea 
-                      rows={4} 
+                    <textarea
+                      rows={4}
                       required
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" 
-                      placeholder="Como podemos ajudar?" 
+                      maxLength={1000}
+                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors"
+                      placeholder="Como podemos ajudar?"
                     />
                   </div>
                   <button 
