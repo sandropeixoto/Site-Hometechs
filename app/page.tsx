@@ -52,9 +52,7 @@ export default function Page() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
-  const [honeypot, setHoneypot] = useState("");
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const formLoadTime = useState(() => Date.now())[0];
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value.replace(/\D/g, "");
@@ -70,13 +68,6 @@ export default function Page() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Honeypot: bots preenchem campos ocultos, humanos não
-    if (honeypot) return;
-
-    // Tempo mínimo de preenchimento: menos de 3s indica bot
-    if (Date.now() - formLoadTime < 3000) return;
-
     setStatus('loading');
 
     try {
@@ -128,7 +119,7 @@ export default function Page() {
       >
         <div className="flex items-center justify-between">
           <a href="#inicio" className="flex items-center shrink-0">
-            <Image src={getAssetPath("/image.png")} alt="Hometechs Logo" width={200} height={48} className="h-10 md:h-12 w-auto object-contain" />
+            <Image referrerPolicy="no-referrer" src={getAssetPath("/image.png")} alt="Hometechs Logo" width={200} height={48} className="h-10 md:h-12 w-auto object-contain" />
           </a>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -169,7 +160,7 @@ export default function Page() {
             className="fixed inset-0 z-50 flex flex-col bg-white px-6 py-6"
           >
             <div className="flex items-center justify-between mb-8">
-              <Image src={getAssetPath("/image.png")} alt="Hometechs Logo" width={160} height={32} className="h-8 w-auto object-contain" />
+              <Image referrerPolicy="no-referrer" src={getAssetPath("/image.png")} alt="Hometechs Logo" width={160} height={32} className="h-8 w-auto object-contain" />
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="p-2 text-slate-400 bg-slate-100 rounded-full hover:text-slate-700 hover:bg-slate-200"
@@ -270,7 +261,7 @@ export default function Page() {
                  transition={{ duration: 0.6, delay: 0.2 }}
                  className="relative z-10 flex-1 flex justify-center w-full"
               >
-                 <Image src={getAssetPath("/image.png")} alt="Hometechs Logo Hero" width={400} height={200} className="w-[80%] max-w-md object-contain drop-shadow-xl" priority />
+                 <Image referrerPolicy="no-referrer" src={getAssetPath("/image.png")} alt="Hometechs Logo Hero" width={400} height={200} className="w-[80%] max-w-md object-contain drop-shadow-xl" priority />
               </motion.div>
             </div>
           </div>
@@ -509,7 +500,7 @@ export default function Page() {
                   whileHover={{ y: -5 }}
                   className="bg-white border text-center border-slate-200 rounded-2xl py-8 px-6 shadow-sm hover:shadow-lg transition-all flex flex-col items-center justify-center"
                 >
-                  <Image src={getAssetPath(partner.img)} alt={partner.name} width={120} height={40} className="h-10 w-auto mb-4 object-contain" />
+                  <Image referrerPolicy="no-referrer" src={getAssetPath(partner.img)} alt={partner.name} width={120} height={40} className="h-10 w-auto mb-4 object-contain" />
                   <div className="font-extrabold text-lg tracking-tighter text-slate-800 mb-1">{partner.name}</div>
                   <div className="text-[10px] font-medium text-slate-500 uppercase tracking-widest">{partner.desc}</div>
                 </motion.div>
@@ -550,58 +541,43 @@ export default function Page() {
                 <h3 className="text-xl font-bold mb-6 text-white text-center md:text-left">Solicite um Orçamento</h3>
                 
                 <form className="space-y-4 relative z-10" onSubmit={handleSubmit}>
-                  {/* Honeypot: campo invisível para detectar bots */}
-                  <input
-                    type="text"
-                    name="website"
-                    value={honeypot}
-                    onChange={(e) => setHoneypot(e.target.value)}
-                    tabIndex={-1}
-                    autoComplete="off"
-                    aria-hidden="true"
-                    style={{ display: 'none' }}
-                  />
                   <div>
-                    <input
-                      type="text"
+                    <input 
+                      type="text" 
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      maxLength={100}
-                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors"
-                      placeholder="Seu nome"
+                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" 
+                      placeholder="Seu nome" 
                     />
                   </div>
                   <div>
-                    <input
-                      type="email"
+                    <input 
+                      type="email" 
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      maxLength={254}
-                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors"
-                      placeholder="Seu e-mail"
+                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" 
+                      placeholder="Seu e-mail" 
                     />
                   </div>
                   <div>
-                    <input
-                      type="tel"
+                    <input 
+                      type="tel" 
                       value={phone}
                       onChange={handlePhoneChange}
-                      maxLength={15}
-                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors"
-                      placeholder="Telefone / WhatsApp (opcional)"
+                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" 
+                      placeholder="Telefone / WhatsApp (opcional)" 
                     />
                   </div>
                   <div>
-                    <textarea
-                      rows={4}
+                    <textarea 
+                      rows={4} 
                       required
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      maxLength={1000}
-                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors"
-                      placeholder="Como podemos ajudar?"
+                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" 
+                      placeholder="Como podemos ajudar?" 
                     />
                   </div>
                   <button 
@@ -636,7 +612,7 @@ export default function Page() {
       {/* FOOTER */}
       <footer className="max-w-7xl mx-auto px-6 pb-6 mt-8">
         <div className="bg-white px-8 py-5 rounded-3xl shadow-sm border border-slate-200 flex flex-col items-center text-center">
-          <Image src={getAssetPath("/image.png")} alt="Hometechs Logo" width={240} height={60} className="h-14 w-auto object-contain mb-4" />
+          <Image referrerPolicy="no-referrer" src={getAssetPath("/image.png")} alt="Hometechs Logo" width={240} height={60} className="h-14 w-auto object-contain mb-4" />
           
           <div className="text-xs text-slate-500 space-y-1">
             <p>© {new Date().getFullYear() || 2026} Hometechs. Todos os direitos reservados. Desenvolvido por <a href="https://nano.net.br" target="_blank" rel="noopener noreferrer" className="font-bold text-slate-800 hover:text-slate-900 transition-colors">NANO</a></p>
