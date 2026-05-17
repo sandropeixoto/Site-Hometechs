@@ -119,7 +119,7 @@ export default function Page() {
       >
         <div className="flex items-center justify-between">
           <a href="#inicio" className="flex items-center shrink-0">
-            <Image referrerPolicy="no-referrer" src={getAssetPath("/image.png")} alt="Hometechs Logo" width={200} height={48} className="h-10 md:h-12 w-auto object-contain" />
+            <Image priority referrerPolicy="no-referrer" src={getAssetPath("/image.png")} alt="Hometechs Logo" width={200} height={48} className="h-10 md:h-12 w-auto object-contain" />
           </a>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -160,7 +160,7 @@ export default function Page() {
             className="fixed inset-0 z-50 flex flex-col bg-white px-6 py-6"
           >
             <div className="flex items-center justify-between mb-8">
-              <Image referrerPolicy="no-referrer" src={getAssetPath("/image.png")} alt="Hometechs Logo" width={160} height={32} className="h-8 w-auto object-contain" />
+              <Image priority referrerPolicy="no-referrer" src={getAssetPath("/image.png")} alt="Hometechs Logo" width={160} height={32} className="h-8 w-auto object-contain" />
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="p-2 text-slate-400 bg-slate-100 rounded-full hover:text-slate-700 hover:bg-slate-200"
@@ -500,7 +500,9 @@ export default function Page() {
                   whileHover={{ y: -5 }}
                   className="bg-white border text-center border-slate-200 rounded-2xl py-8 px-6 shadow-sm hover:shadow-lg transition-all flex flex-col items-center justify-center"
                 >
-                  <Image referrerPolicy="no-referrer" src={getAssetPath(partner.img)} alt={partner.name} width={120} height={40} className="h-10 w-auto mb-4 object-contain" />
+                  <div className="relative w-full h-12 mb-4">
+                    <Image referrerPolicy="no-referrer" src={getAssetPath(partner.img)} alt={partner.name} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-contain" />
+                  </div>
                   <div className="font-extrabold text-lg tracking-tighter text-slate-800 mb-1">{partner.name}</div>
                   <div className="text-[10px] font-medium text-slate-500 uppercase tracking-widest">{partner.desc}</div>
                 </motion.div>
@@ -545,6 +547,7 @@ export default function Page() {
                     <input 
                       type="text" 
                       required
+                      maxLength={100}
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" 
@@ -555,6 +558,7 @@ export default function Page() {
                     <input 
                       type="email" 
                       required
+                      maxLength={150}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" 
@@ -564,6 +568,7 @@ export default function Page() {
                   <div>
                     <input 
                       type="tel" 
+                      maxLength={20}
                       value={phone}
                       onChange={handlePhoneChange}
                       className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" 
@@ -574,6 +579,7 @@ export default function Page() {
                     <textarea 
                       rows={4} 
                       required
+                      maxLength={1000}
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" 

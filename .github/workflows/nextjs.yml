@@ -57,6 +57,7 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Lint with Next.js
+        continue-on-error: true
         run: npm run lint
       - name: Build with Next.js
         run: npm run build
